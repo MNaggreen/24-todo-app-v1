@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import styles from './TodoForm.module.css'
+/* правила для тегов из данного файла будут 
+действовать только в данном компоненте TodoForm */
+
 
 function TodoForm({ addTodo }) {
     /* 2 действие принимаем функцию как переменную
@@ -6,7 +10,7 @@ function TodoForm({ addTodo }) {
     submit формы */
 
     const[text, setText] = useState('')
-    const onSubmitHandler = (event) => (
+    const onSubmitHandler = (event) => {
         event.preventDefault()
         /* делаем все действия чтбы изежать при submit 
         перехода на другую страницу */
@@ -15,14 +19,22 @@ function TodoForm({ addTodo }) {
         /* все это делаем для того чтобы текст 
         пропал из формы setText и позже добавляем
         текст в наш списко 2 действие AddTodo */
-    )
+}
 
     return (
+        <div className={styles.todoFormContainer}>
+            {/* добавляем див с классом
+            для того чтобы все наши правила
+            по тегам действовали только в данном
+            компоненте */}
         <form onSubmit={onSubmitHandler}>
-            <input placeholder="Enter new todo" value={text} onChange={(e) => e.target.value} />
+            <input placeholder="Enter new todo" 
+            value={text} 
+            onChange={(e) => setText(e.target.value)} />
             {/* onChange значит значение из поля ввода value это контролируемое поле ввода*/}
-            <button tyoe="submit">Submit</button>
+            <button type="submit">Submit</button>
         </form>
+        </div>
     )
 }
 

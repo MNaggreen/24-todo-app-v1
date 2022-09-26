@@ -15,7 +15,7 @@ function App() {
   const [todos, setTodos] = useState([])
 
   const addTodoHandler = (text) => {
-    setToodos([...todos, text])
+    setTodos([...todos, text])
   }
   /*   создаем функцию которая будет добавлять строку в список 
 в данной функции мы берем массив деструктуризируем его для
